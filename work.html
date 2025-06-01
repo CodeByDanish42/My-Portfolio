@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Work</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d1117;
+      color: rgb(255, 255, 255);
+      font-family: 'Poppins', sans-serif;
+      padding-top: 70px;
+    }
+  @keyframes textShine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: slideDownFade 1s ease forwards;
+}
+
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  height: 2px;
+  width: 0%;
+  background-color: #58a6ff;
+  transition: width 0.4s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+    nav {
+      background-color: #000000;
+    }
+
+    .nav-link {
+      color: rgb(255, 255, 255) !important;
+      font-weight: 500;
+    }
+
+    .nav-link.active {
+      color: #58a6ff !important;
+    }
+
+    h2 {
+  color: #58a6ff;
+  font-weight: 700;
+  text-align: center;
+  margin: 20px 0 30px; 
+}
+h5{
+  color: gray;
+}
+ .card {
+  background-color: black;
+  color: aliceblue;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    .btn-outline-light {
+      border-color: #58a6ff;
+      color: #58a6ff;
+    }
+
+    .btn-outline-light:hover {
+      background-color: #58a6ff;
+      color: #0d1117;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white" href="index.html">Syed`s Portfolio</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon bg-light"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="work.html">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>My Projects</h2>
+    <div class="row" id="work-section">
+    </div>
+  </main>
+
+  <script>
+    const projects = [
+      {
+        title: "News Api Website ",
+        description: "Stay updated with the latest headlines using our dynamic News API website. Built with HTML, Tailwind CSS, Bootstrap, and JavaScript, it fetches real-time news from trusted sources, offering a sleek, responsive, and user-friendly interface for browsing top stories",
+        github: "https://github.com/CodeByDanish42/News-App",
+        demo: "https://codebydanish42.github.io/News-App/"
+      },
+      {
+        title: "Weather App",
+        description: "Get real-time weather updates with our sleek Weather App. Built using HTML, CSS, JavaScript, and integrated with a live weather API, it provides accurate forecasts with a clean, animated, and responsive user interface ",
+        github: "https://github.com/CodeByDanish42/Weather-App",
+        demo: " https://codebydanish42.github.io/Weather-App/"
+      },
+      {
+        title: "Todo App",
+        description: "Stay organized and boost productivity with this dynamic To-Do App. Built using HTML, CSS, JavaScript, and Bootstrap, it features local storage support, a responsive UI, dark/light theme toggle, and full task management including add, edit, and delete functionalities.",
+        github: "https://github.com/CodeByDanish42/Todo-App",
+        demo: "https://codebydanish42.github.io/Todo-App/"
+      }
+    ];
+
+    const workSection = document.getElementById("work-section");
+
+    projects.forEach(project => {
+      const col = document.createElement("div");
+      col.className = "col-md-4 mb-4";
+
+      const card = document.createElement("div");
+      card.className = "card h-100 p-3 animate-on-scroll";
+
+      const h5 = document.createElement("h5");
+      h5.textContent = project.title;
+
+      const p = document.createElement("p");
+      p.textContent = project.description;
+
+      const githubBtn = document.createElement("a");
+      githubBtn.href = project.github;
+      githubBtn.className = "btn btn-outline-light btn-sm me-2";
+      githubBtn.textContent = "GitHub";
+      githubBtn.target = "_blank";
+
+      const demoBtn = document.createElement("a");
+      demoBtn.href = project.demo;
+      demoBtn.className = "btn btn-outline-light btn-sm";
+      demoBtn.textContent = "Live Demo";
+      demoBtn.target = "_blank";
+
+      card.appendChild(h5);
+      card.appendChild(p);
+      card.appendChild(githubBtn);
+      card.appendChild(demoBtn);
+
+      col.appendChild(card);
+      workSection.appendChild(col);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
